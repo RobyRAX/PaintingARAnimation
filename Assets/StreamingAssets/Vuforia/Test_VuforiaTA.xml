@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="frame" size="0.250000 0.250000" />
+  </Tracking>
+</QCARConfig>

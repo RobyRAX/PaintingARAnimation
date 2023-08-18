@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="Cewek" size="1.000000 0.578125" />
+    <ImageTarget name="Laut" size="1.000000 0.685156" />
+  </Tracking>
+</QCARConfig>
