@@ -6,3 +6,5 @@ Logs
 Temp
 Packages/com.ptc.vuforia.engine-10.16.5.tgz
 *.tgz
+*.cache
+.vs
