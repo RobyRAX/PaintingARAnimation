@@ -10,17 +10,17 @@ public class TextureSequence : MonoBehaviour
     [SerializeField] int frameRate;
     [SerializeField] int frameStartDelay;
 
-    private MaterialPropertyBlock propertyBlock;
+    //private MaterialPropertyBlock propertyBlock;
     private int textureIndex = 0;
 
-    private Renderer objectRenderer;
+    //private Renderer objectRenderer;
     bool startSequence;
 
     private void Start()
     {
-        objectRenderer = GetComponent<Renderer>();
-        propertyBlock = new MaterialPropertyBlock();
-        propertyBlock.SetTexture("_MainTex", imageSequenceFrames[textureIndex]);
+        //objectRenderer = GetComponent<Renderer>();
+        //propertyBlock = new MaterialPropertyBlock();
+        //propertyBlock.SetTexture("_MainTex", imageSequenceFrames[textureIndex]);
     }
 
     public IEnumerator AnimateImageSequence()
@@ -31,8 +31,10 @@ public class TextureSequence : MonoBehaviour
         while (startSequence)
         {
             textureIndex = (textureIndex + 1) % imageSequenceFrames.Length;
-            propertyBlock.SetTexture("_MainTex", imageSequenceFrames[textureIndex]);
-            objectRenderer.SetPropertyBlock(propertyBlock);
+
+            imageSequenceMaterial.SetTexture("_BaseMap", imageSequenceFrames[textureIndex]);
+            //propertyBlock.SetTexture("_MainTex", imageSequenceFrames[textureIndex]);
+            //objectRenderer.SetPropertyBlock(propertyBlock);
 
             if(textureIndex == imageSequenceFrames.Length - 1)
             {

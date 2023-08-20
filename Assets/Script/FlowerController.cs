@@ -6,7 +6,7 @@ using DG.Tweening;
 public class FlowerController : MonoBehaviour
 {
     [SerializeField] int frameRate;
-    [SerializeField] int frameStartDelay;
+    public float startDelay;
     [SerializeField] float bloomDuration;
 
     [System.Serializable]
@@ -21,7 +21,6 @@ public class FlowerController : MonoBehaviour
     private void Start()
     {
         InitFlower();
-        StartCoroutine(BloomFlowerCo());
     }
 
     void InitFlower()
@@ -33,20 +32,24 @@ public class FlowerController : MonoBehaviour
             childProp.scale = child.localScale;
 
             childs.Add(childProp);
+        }
+        ResetFlower();
+    }
+
+    public void ResetFlower()
+    {
+        foreach (Transform child in transform)
+        {
             child.localScale = Vector3.zero;
         }
     }
 
-    public IEnumerator BloomFlowerCo()
+    public void AnimFlower()
     {
-        yield return new WaitForSeconds((1f / frameRate) * frameStartDelay);
-
-        foreach(ChildProp childProp in childs)
+        foreach (ChildProp childProp in childs)
         {
             childProp.obj.transform.DOScale(childProp.scale, bloomDuration).SetEase(Ease.InOutCirc);
             Debug.Log(childProp.obj.name + " Child of " + gameObject.name);
         }
-
-        yield return null;
     }
 }
